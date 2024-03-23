@@ -1,30 +1,24 @@
 # React + TypeScript + Vite
+ 
+Bem-vindo ao teste para a vaga [` Desenvolvedor(a) Front End React`](https://agrotis.gupy.io/jobs/6784050?jobBoardSource=gupy_opportunities)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto iniciado com [Vitejs React](https://vitejs.dev/guide), para estilização foi utilizado a style guide [Material UI Core v5](https://mui.com/material-ui/getting-started), para exemplo de uso de Redux, o [zustand](https://github.com/pmndrs/zustand) foi utilizado, mas eu poderia ter usado ContextApi, Redux com Sagas ou Thunk. No geral, uso mínimo de bibliotecas externas e melhores praticas de desenvolvimento.
 
-Currently, two official plugins are available:
+- React.js versão 18.2
+- Node.js versão 16.20 *Caso precise utilizar outra versão do node.js recomendo usar o [nvm](https://github.com/nvm-sh/nvm).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Para executar o código localmente
 
-## Expanding the ESLint configuration
+Faça o clone do projeto, em seguida acessar a pasta e rodar os comandos::
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
+- Primeiro:
 
 ```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+npm install ou yarn
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Em seguida:
+
+```js
+npm run dev ou yarn dev
+```
