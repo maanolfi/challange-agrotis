@@ -9,6 +9,8 @@ import useForm from './useForm';
 import { useFormStore } from '../../store/useFormStore';
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 
+import FormHelperTextCustom from './FormHelperTextCustom'
+
 interface Item {
     id: string;
     nome: string;
@@ -105,9 +107,8 @@ export default function SelectCustom({ url = "", label = "", name_field = "" }) 
                     </MenuItem>
                 ))}
             </Select>
-
             {error_fields[name_field] ? (
-                <FormHelperText error>{error_fields[name_field]}</FormHelperText>
+                <FormHelperTextCustom />
             ) : (
                 <>
                     {rest[name_field].cnpj && (

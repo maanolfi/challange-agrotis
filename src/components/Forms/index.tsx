@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import { styled } from '@mui/system';
 import FormHelperText from '@mui/material/FormHelperText';
 import { Box } from '@mui/material';
+import FormHelperTextCustom from './FormHelperTextCustom'
 import DatePicker from './DatePicker'
 import SelectCustom from './SelectCustom'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -36,10 +37,12 @@ export default function FormsRoot() {
                         onChange={onChangeInput}
                         value={name}
                         error={Boolean(error_fields.name)}
-                        helperText={error_fields.name ? error_fields.name : ''}
                     />
-                    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <FormHelperText>{`${name.length}/40`}</FormHelperText>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                        {Boolean(error_fields.name) ? <FormHelperTextCustom /> : <div />}
+                        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <FormHelperText>{`${name.length}/40`}</FormHelperText>
+                        </Box>
                     </Box>
                 </FormGrid>
 
