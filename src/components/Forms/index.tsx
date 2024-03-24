@@ -18,7 +18,7 @@ const FormGrid = styled(Grid)(() => ({
 const theme = createTheme({
     palette: {
         primary: { main: "rgba(0, 121, 107, 1)" }
-    },
+    }
 });
 
 export default function FormsRoot() {

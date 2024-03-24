@@ -5,7 +5,7 @@ import BrowserRouter from './BrowserRouter'
 import CssBaseline from '@mui/material/CssBaseline';
 import CheckSharpIcon from '@mui/icons-material/CheckSharp';
 import WarningSharpIcon from '@mui/icons-material/WarningSharp';
-
+import './global.css'
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';

@@ -1,11 +1,11 @@
 import { ChangeEvent, MouseEvent } from 'react';
-import { enqueueSnackbar, closeSnackbar  } from 'notistack';
+import { enqueueSnackbar, closeSnackbar } from 'notistack';
 import { Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { useFormStore } from '../../store/useFormStore';
-
+import useDebounce from './useDebounce'
 dayjs.extend(utc);
 
 const useForm = () => {
@@ -20,20 +20,29 @@ const useForm = () => {
         onChangeError
     }: any = useFormStore();
 
+    function saveInput(name = '') {
+        onChangeError({ [name]: null })
+    }
+
+    const debouncedInputChange = useDebounce(saveInput, 500);
+
     const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        if (name === 'observation' && value.length <= 1000) {
-            onChangeState({ name, value });
-        } else if (name === 'name' && value.length <= 40) {
-            onChangeState({ name, value });
-        } else {
-            onChangeState({ name, value });
+
+        if (name === 'observation') {
+            if (value.length >= 1001) return null
         }
+        if (name === 'name') {
+            debouncedInputChange(name)
+            if (value.length >= 41) return null
+        }
+        onChangeState({ name, value })
     };
 
     const onChangeSelect = (data: any) => {
         const { name, value } = data;
         onChangeState({ name, value });
+        onChangeError({ [name]: null })
     };
 
     const validDates = (start: string, end: string) => {
@@ -43,7 +52,7 @@ const useForm = () => {
             onChangeError({ date_end: 'A primeira data é menor que a segunda.' });
             return false;
         } else {
-            onChangeError({ date_end: null });
+            onChangeError({ date_end: null, date_start: null });
             return true;
         }
     };
